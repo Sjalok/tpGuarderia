@@ -50,6 +50,18 @@ public class Guarderia {
         }
     }
 
+    public void imprimirAnimalesSegunDueño(String nombreDueño) {
+        for (Animal i: animalesEnGuarderia) {
+            if (i.getDueño().getNombre().equals(nombreDueño)) {
+                System.out.println(i.toString());
+            }
+        }
+    }
+
+    public void desalojarAnimales() {
+        animalesEnGuarderia.clear();
+    }
+
     @Override
     public String toString() {
         return "\nLos animales registrados actualmente en la guarderia son: " +

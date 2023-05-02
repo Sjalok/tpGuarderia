@@ -27,7 +27,7 @@ public class Perro extends Animal {
         } else {
             aux = "hembra";
         }
-        return "\nperro de nombre " + getNombre() +
+        return "\nperro de nombre: " + getNombre() +
                 "\nedad: " + getEdad()  +
                 "\nel dueño es: " + getDueño().getNombre() +
                 "\nsexo: " + aux +

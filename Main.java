@@ -74,6 +74,8 @@ public class Main {
             Hamster hamster = new Hamster();
             Mojarrita mojarra = new Mojarrita();
 
+
+
             if (aux == true) {
                 System.out.println("-----------------------------------------");
                 System.out.println("|Bienvenidos a " + guarderia.getNombre() + "|");
@@ -130,12 +132,9 @@ public class Main {
             System.out.println("2 para retirar un animal de la guarderia");
             System.out.println("3 cantidad de animales que hay en la guarderia");
             System.out.println("4 para listar toda la informacion de todos los animales en la guarderia");
-            System.out.printf("5 para hacer saludar a todos los animales de la guarderia (que educados son!) : ");
+            System.out.println("5 para hacer saludar a todos los animales de la guarderia (que educados son!) ");
+            System.out.printf("6 para desalojar todos los animales! ( quedan a cargo tuyo ): ");
             opcion = sc.nextInt();
-
-            if (opcion == 0) {
-                System.out.println("Gracias por utilizar nuestro sistema, vuelva prontos!");
-            }
 
             if (opcion == 1) {
                 String ayuda;
@@ -221,8 +220,7 @@ public class Main {
                     ayuda3 = sc.nextFloat();
                     mojarra.setPeso(ayuda3);
                     System.out.printf("La mojarrita es de agua fria o tropical? ");
-                    ayuda = sc.next();
-                    ayuda = ayuda.toLowerCase();
+                    ayuda = sc.next().toLowerCase();
                     mojarra.setTipodeagua(ayuda);
                     guarderia.agregarAnimal(mojarra);
                 }
@@ -233,10 +231,12 @@ public class Main {
             }
 
             if (opcion == 2) {
+                System.out.println("Los animales que tienes actualmente en la guarderia son");
+                guarderia.imprimirAnimalesSegunDueño(nombre);
                 String nombreAnimal;
-                System.out.printf("Perfecto, " + nombre + " cual es el nombre del animal que deseas retirar? ");
+                System.out.printf(nombre + ", cual es el nombre del animal que deseas retirar? ");
                 nombreAnimal = sc.next();
-                System.out.printf("Y solo por segurar, que numero de dni tenes? ");
+                System.out.printf("Y solo por asegurar, que numero de dni tenes? ");
                 aux2 = sc.nextInt();
                 guarderia.retirarAnimal(nombreAnimal,nombre,aux2);
             }
@@ -256,6 +256,18 @@ public class Main {
                 }
             }
 
-        } while (opcion > 0 && opcion < 7);
+            if (opcion == 6) {
+                guarderia.desalojarAnimales();
+                System.out.println("Se han desalojado todos los animales! hacete cargo vos " + nombre);
+            }
+
+            if (opcion < 0 || opcion > 6) {
+                System.out.println("Marcaste mal la opcion! por favor vuelva a intentar!");
+                System.out.println(" ");
+            }
+
+        } while (opcion != 0);
+
+        System.out.println("Gracias por usar nuestro sistema! vuelva prontos!");
     }
 }

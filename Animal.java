@@ -7,7 +7,6 @@ public abstract class Animal {
     private char sexo;
     private float peso;
     private String tipoDeAnimal;
-    private boolean estaEnGuarderia;
 
 
     public Animal() {
@@ -41,10 +40,6 @@ public abstract class Animal {
 
     public float getPeso() {
         return peso;
-    }
-
-    public boolean isEstaEnGuarderia() {
-        return estaEnGuarderia;
     }
 
     public String getTipoDeAnimal() {

@@ -1,4 +1,6 @@
-public class Animal {
+import java.util.HashSet;
+
+public abstract class Animal {
     private String nombre;
     private int edad;
     private Dueño dueño;
@@ -7,10 +9,11 @@ public class Animal {
     private String tipoDeAnimal;
     private boolean estaEnGuarderia;
 
-    public String saludar () {
-        return "Hola me llamo " + nombre + ", soy un/a " + tipoDeAnimal + " y mi dueño es: " + this.dueño.getNombre() +
-                "\n------------------------------------------------------";
+
+    public Animal() {
     }
+
+    public abstract String saludar();
 
     public Animal(String nombre, int edad, Dueño dueño, char sexo, float peso) {
         this.nombre = nombre;
@@ -46,5 +49,29 @@ public class Animal {
 
     public String getTipoDeAnimal() {
         return tipoDeAnimal;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public void asignarDueño(HashSet<Dueño> usuarios, String i) {
+        for (Dueño usuario: usuarios) {
+            if (usuario.getNombre().equals(i)) {
+                this.dueño = usuario;
+            }
+        }
+    }
+
+    public void setSexo(char sexo) {
+        this.sexo = sexo;
+    }
+
+    public void setPeso(float peso) {
+        this.peso = peso;
     }
 }

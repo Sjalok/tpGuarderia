@@ -3,6 +3,9 @@ public class Mojarrita extends Animal {
 
     private tipoDeAgua tipodeagua;
 
+    public Mojarrita() {
+    }
+
     public Mojarrita(String nombre, int edad, Dueño dueño, char sexo, float peso, String i) {
         super(nombre, edad, dueño, sexo, peso);
         i = i.toLowerCase();
@@ -13,7 +16,14 @@ public class Mojarrita extends Animal {
         }
     }
 
-
+    public void setTipodeagua(String i) {
+        String x = i.toLowerCase();
+        if (x == "tropical") {
+            this.tipodeagua = tipoDeAgua.TROPICAL;
+        } else {
+            this.tipodeagua = tipoDeAgua.FRIA;
+        }
+    }
 
     @Override
     public String toString() {
@@ -23,9 +33,19 @@ public class Mojarrita extends Animal {
         } else {
             aux = "hembra";
         }
-        return "El perro se llama " + getNombre() + ", tiene " + getEdad() + ", el dueño es: " + getDueño().getNombre() +
-                " es de sexo " + aux + ", pesa " + getPeso() + " y es de agua " + this.tipodeagua +
+        return "\nMojarra de nombre: " + getNombre() +
+                "\nedad: " + getEdad() +
+                "\nel dueño es: " + getDueño().getNombre() +
+                "\nsexo: " + aux +
+                "\npeso: " + getPeso() +
+                "\nel tipo de agua: " + this.tipodeagua +
                 "\n---------------------------------------------------------------------------";
+    }
+
+    @Override
+    public String saludar() {
+        return "Hola me llamo " + getNombre() + ", soy una " + tipoDeAnimal + " y mi dueño es: " + getDueño().getNombre() +
+                "\n------------------------------------------------------";
     }
 
     enum tipoDeAgua {FRIA, TROPICAL}

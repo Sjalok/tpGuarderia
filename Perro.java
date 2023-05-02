@@ -2,6 +2,10 @@ public class Perro extends Animal {
     private final String tipoDeAnimal = "perro";
     private String raza;
 
+
+    public Perro() {
+    }
+
     public Perro(String nombre, int edad, Dueño dueño, char sexo, float peso, String raza) {
         super(nombre, edad, dueño, sexo, peso);
         this.raza = raza;
@@ -9,6 +13,10 @@ public class Perro extends Animal {
 
     public String getRaza() {
         return raza;
+    }
+
+    public void setRaza(String raza) {
+        this.raza = raza;
     }
 
     @Override
@@ -19,8 +27,18 @@ public class Perro extends Animal {
         } else {
             aux = "hembra";
         }
-        return "El perro se llama " + getNombre() + ", tiene " + getEdad() + ", el dueño es: " + getDueño().getNombre() +
-                " es de sexo " + aux + ", pesa " + getPeso() + " y es de raza " + this.raza +
+        return "\nperro de nombre " + getNombre() +
+                "\nedad: " + getEdad()  +
+                "\nel dueño es: " + getDueño().getNombre() +
+                "\nsexo: " + aux +
+                "\npeso en gramos: " + getPeso() + "" +
+                "\nraza: " + this.raza +
                 "\n---------------------------------------------------------------------------";
+    }
+
+    @Override
+    public String saludar() {
+        return "Hola me llamo " + getNombre() + ", soy un " + tipoDeAnimal + " y mi dueño es: " + getDueño().getNombre() +
+                "\n------------------------------------------------------";
     }
 }

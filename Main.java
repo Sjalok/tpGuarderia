@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -7,6 +8,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int opcion;
         int aux2;
+        String nombre = null;
         boolean aux = true;
 
         HashSet<Dueño> usuarios = new HashSet<Dueño>();
@@ -65,7 +67,12 @@ public class Main {
 
         // el menu va a contar con 6 opciones
         do {
+            int nroDni = 0;
             Dueño corriente = new Dueño();
+            Perro perro = new Perro();
+            Gato gato = new Gato();
+            Hamster hamster = new Hamster();
+            Mojarrita mojarra = new Mojarrita();
 
             if (aux == true) {
                 System.out.println("-----------------------------------------");
@@ -79,26 +86,40 @@ public class Main {
                 for (Dueño usuario: usuarios) {
                     if (aux2 == usuario.getDni()) {
                         auxiliar = true;
-                        ayuda = usuario.getNombre();
+                        nombre = usuario.getNombre();
+                        break;
                     }
                 }
                 if (auxiliar == true) {
-                    System.out.println("Bienvenido/a " + ayuda);
+                    System.out.println("Bienvenido/a " + nombre);
+                    System.out.println(" ");
                 } else {
                     System.out.println("Lo sentimos! pero tiene que registrarse para usar nuestro sistema!");
                     System.out.printf("Desea registrarse ahora? ( 1 para registrarse, 2 para no registrarse ): ");
                     aux2 = sc.nextInt();
                     if (aux2 == 1) {
-                        System.out.println("hola");
+                        String aux3;
+                        System.out.printf("Nombre? ");
+                        nombre = sc.next();
+                        corriente.setNombre(nombre);
+                        System.out.print("Direccion? ");
+                        sc.nextLine();
+                        aux3 = sc.nextLine();
+                        corriente.setDireccion(aux3);
+                        System.out.printf("y, por ultimo, numero de dni? ");
+                        nroDni = sc.nextInt();
+                        corriente.setDni(nroDni);
+                        System.out.println("Ocurrio un error, tiene que ser un valor de enteros, no de otro tipo de dato!");
+                        System.out.println(" ");
+                        usuarios.add(corriente);
+                        System.out.println(" ");
+                        System.out.println("Gracias " + corriente.getNombre() + " por registrarte! en seguida te habilitamos las opciones!");
+                        System.out.println(" ");
                     } else {
                         System.out.println("Gracias igual, vuelva prontos!");
                         break;
                     }
                 }
-            }
-
-            if (aux == true) {
-
             }
 
             aux = false;
@@ -117,16 +138,124 @@ public class Main {
             }
 
             if (opcion == 1) {
+                String ayuda;
+                char ayuda2;
+                float ayuda3;
+                do {
+                    System.out.printf("Que animal es? recuerde que la guarderia acepta solo perros, gatos, hamsters y mojarritas: ");
+                    ayuda = sc.next().toLowerCase();
+                    if (ayuda.equals("perro") || ayuda.equals("gato") || ayuda.equals("hamster") || ayuda.equals("mojarrita")) {
+                        break;
+                    } else {
+                        System.out.println("Ingreso el dato mal, por favor vuelva a intentarlo!");
+                    }
+                } while (true);
+                System.out.println(" ");
 
+                if (ayuda.equals("perro")) {
+                    System.out.printf("Nombre del perro? ");
+                    ayuda = sc.next();
+                    perro.setNombre(ayuda);
+                    System.out.printf("Edad? ");
+                    aux2 = sc.nextInt();
+                    perro.setEdad(aux2);
+                    perro.asignarDueño(usuarios, nombre);
+                    System.out.printf("Sexo? m para macho, h para hembra: ");
+                    ayuda2 = sc.next().charAt(0);
+                    perro.setSexo(ayuda2);
+                    System.out.printf("Peso del animal? ");
+                    ayuda3 = sc.nextFloat();
+                    perro.setPeso(ayuda3);
+                    System.out.printf("Raza del perro? ");
+                    ayuda = sc.next();
+                    perro.setRaza(ayuda);
+                    guarderia.agregarAnimal(perro);
+                }
+
+                if (ayuda.equals("gato")) {
+                    System.out.printf("Nombre del gato? ");
+                    ayuda = sc.next();
+                    gato.setNombre(ayuda);
+                    System.out.printf("Edad? ");
+                    aux2 = sc.nextInt();
+                    gato.setEdad(aux2);
+                    gato.asignarDueño(usuarios, nombre);
+                    System.out.printf("Sexo? m para macho, h para hembra: ");
+                    ayuda2 = sc.next().charAt(0);
+                    gato.setSexo(ayuda2);
+                    System.out.printf("Peso del animal? ");
+                    ayuda3 = sc.nextFloat();
+                    gato.setPeso(ayuda3);
+                    guarderia.agregarAnimal(gato);
+                }
+
+                if (ayuda.equals("hamster")) {
+                    System.out.printf("Nombre del hamster? ");
+                    ayuda = sc.next();
+                    hamster.setNombre(ayuda);
+                    System.out.printf("Edad? ");
+                    aux2 = sc.nextInt();
+                    hamster.setEdad(aux2);
+                    hamster.asignarDueño(usuarios, nombre);
+                    System.out.printf("Sexo? m para macho, h para hembra: ");
+                    ayuda2 = sc.next().charAt(0);
+                    hamster.setSexo(ayuda2);
+                    System.out.printf("Peso del animal? ");
+                    ayuda3 = sc.nextFloat();
+                    hamster.setPeso(ayuda3);
+                    guarderia.agregarAnimal(hamster);
+                }
+
+                if (ayuda.equals("mojarrita")) {
+                    System.out.printf("Nombre de la mojarrita? ");
+                    ayuda = sc.next();
+                    mojarra.setNombre(ayuda);
+                    System.out.printf("Edad? ");
+                    aux2 = sc.nextInt();
+                    mojarra.setEdad(aux2);
+                    mojarra.asignarDueño(usuarios, nombre);
+                    System.out.printf("Sexo? m para macho, h para hembra: ");
+                    ayuda2 = sc.next().charAt(0);
+                    mojarra.setSexo(ayuda2);
+                    System.out.printf("Peso del animal? ");
+                    ayuda3 = sc.nextFloat();
+                    mojarra.setPeso(ayuda3);
+                    System.out.printf("La mojarrita es de agua fria o tropical? ");
+                    ayuda = sc.next();
+                    ayuda = ayuda.toLowerCase();
+                    mojarra.setTipodeagua(ayuda);
+                    guarderia.agregarAnimal(mojarra);
+                }
+
+                System.out.println(nombre + ", Su animal ha sido ingresado con exito!");
+                System.out.println(" ");
+
+            }
+
+            if (opcion == 2) {
+                String nombreAnimal;
+                System.out.printf("Perfecto, " + nombre + " cual es el nombre del animal que deseas retirar? ");
+                nombreAnimal = sc.next();
+                System.out.printf("Y solo por segurar, que numero de dni tenes? ");
+                aux2 = sc.nextInt();
+                guarderia.retirarAnimal(nombreAnimal,nombre,aux2);
+            }
+
+            if (opcion == 3) {
+                System.out.println("La cantidad de animales es de: " + guarderia.cantAnimales());
+                System.out.println(" ");
+            }
+
+            if (opcion == 4) {
+              guarderia.imprimirAnimales();
             }
 
             if (opcion == 5) {
                 for (Animal i: guarderia.getAnimalesEnGuarderia()) {
-                    i.saludar();
+                    System.out.println(i.saludar());
                 }
             }
 
         } while (opcion > 0 && opcion < 7);
-
     }
 }

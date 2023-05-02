@@ -16,6 +16,18 @@ public class Dueño {
         return dni;
     }
 
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
     public String getNombre() {
         return nombre;
     }

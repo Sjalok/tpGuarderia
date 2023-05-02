@@ -24,13 +24,36 @@ public class Guarderia {
         animalesEnGuarderia.add(i);
     }
 
-//    public void sacarAnimal (Animal i.getNombre) {
-//
-//    }
+    public void retirarAnimal (String nombreanimal,String nombredueño, int dni) {
+        for (Animal animal: animalesEnGuarderia) {
+            if (nombreanimal.equals(animal.getNombre()) && nombredueño.equals(animal.getDueño().getNombre()) && dni == animal.getDueño().getDni()) {
+                animalesEnGuarderia.remove(animal);
+                System.out.println("Perfecto " + nombredueño + " su animal ha sido retirado con exito!");
+                return;
+            }
+        }
+        System.out.println("Ocurrio un error, no tienes el animal " + nombreanimal + " o su dni es incorrento, no sea un rufian y no se haga pasar por alguien!");
+        return;
+    }
+
+    public int cantAnimales() {
+        int cantAnimales = 0;
+        for (Animal i: animalesEnGuarderia) {
+            cantAnimales = cantAnimales + 1;
+        }
+        return cantAnimales;
+    }
+
+    public void imprimirAnimales() {
+        for (Animal i: animalesEnGuarderia) {
+            System.out.println(i.toString());
+        }
+    }
 
     @Override
     public String toString() {
-        return "Guarderia: " + nombre + " y los animales existentes en la guarderia son: " + animalesEnGuarderia;
+        return "\nLos animales registrados actualmente en la guarderia son: " +
+                "\n" + animalesEnGuarderia;
     }
 }
 

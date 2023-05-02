@@ -1,9 +1,14 @@
 public class Hamster extends Animal{
     private final String tipoDeAnimal = "hamster";
 
+    public Hamster() {
+    }
+
     public Hamster(String nombre, int edad, Dueño dueño, char sexo, float peso) {
         super(nombre, edad, dueño, sexo, peso);
     }
+
+
 
     @Override
     public String toString() {
@@ -13,8 +18,17 @@ public class Hamster extends Animal{
         } else {
             aux = "hembra";
         }
-        return "El perro se llama " + getNombre() + ", tiene " + getEdad() + ", el dueño es: " + getDueño().getNombre() +
-                " es de sexo " + aux + " y pesa " + getPeso() +
+        return "\nhamster de nombre: " + getNombre() +
+                "\nedad: " + getEdad() +
+                "\nel dueño es: " + getDueño().getNombre() +
+                "\nsexo: " + aux +
+                "\npeso: " + getPeso() +
                 "\n---------------------------------------------------------------------------";
+    }
+
+    @Override
+    public String saludar() {
+        return "Hola me llamo " + getNombre() + ", soy un " + tipoDeAnimal + " y mi dueño es: " + getDueño().getNombre() +
+                "\n------------------------------------------------------";
     }
 }
